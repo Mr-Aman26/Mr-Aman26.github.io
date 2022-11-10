@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<label for="quantity">Enter two numbers and find the sum:(template literals)</label>
+<input type="number" id="quantity1" name="quantity">
+<input type="number" id="quantity2" name="quantity">
+
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+<br><br>
+
+<label for="quantity">The mean of array : [96,97,98,99,94]</label>
+<button onclick="myFunction1()">Click me</button>
+<p id="demo3"></p>
+<p id="demo4"></p>
+<br><br>
+
+<label for="quantity">Enter two numbers and find the sum(with default parameters as zero):</label>
+<button onclick="myFunctionn2()">Click me</button>
+<p id="demo5"></p>
+<p id="demo6"></p>
+<p id="demo7"></p>
+<br><br>
+<label for="quantity">Enter three number to find max (Using arrow function):</label>
+<input type="number" id="q5" name="quantity" >
+<input type="number" id="q6" name="quantity" >
+<input type="number" id="q7" name="quantity" >
+<button onclick="myFunction3()">Click me</button>
+<p id="demo8"></p>
+<br><br>
+
+<label for="quantity">Enter number of sides and length of side (either a rhombus or hexagon):(inheritence)</label>
+<input type="number" id="q8" name="quantity" value="0">
+<input type="number" id="q9" name="quantity" value="0">
+<button onclick="myFunction4()">Click me</button>
+<p id="demo9"></p>
+<br><br>
+
+<label for="quantity">The mean of array (rest parameter)</label>
+<input type="number" id="q10" name="quantity" >
+<input type="number" id="q11" name="quantity" >
+<input type="number" id="q12" name="quantity" >
+<input type="number" id="q13" name="quantity" >
+<button onclick="myFunction5()">Click me</button>
+<p id="demo10"></p>
+<p id="demo11"></p>
+<br><br>
+
+<label for="quantity">The maximum element of array (spread operator)</label>
+<input type="number" id="q14" name="quantity" >
+<input type="number" id="q15" name="quantity" >
+<input type="number" id="q16" name="quantity" >
+<input type="number" id="q17" name="quantity" >
+<button onclick="myFunction6()">Click me</button>
+<p id="demo12"></p>
+<p id="demo13"></p>
+<br><br>
+
+<label for="quantity">const student = {name: 'Arun', position: 'First', rollno: '24'}; (Object Destructuring Assignment)</label>
+<button onclick="myFunction7()">Click me</button>
+<p id="demo14"></p>
+<br><br>
+<label for="quantity">joining ; (ES6 modules)</label>
+
+<button onclick="myFunction8()">Click me</button>
+
+<p id="demo15"></p>
+<script>
+
+//Question1
+function myFunction() {
+    let a=document.getElementById("quantity1").value;
+    let b=document.getElementById("quantity2").value;
+
+    document.getElementById("demo").innerHTML = `The sum is ${parseInt(a)+parseInt(b)}`;
+  }
+
+  
+
+//<!-- Question2 -->
+
+const marks = [98, 99, 97, 96, 94];
+
+function myFunction1(){
+    var sum = 0;
+
+    for(var x of marks){
+    sum+=x;
+    }
+    var mean = sum/marks.length;
+    let text_sum = `The sum of elemts of array is ${sum}`
+    let text_mean = `The average is ${mean}`
+    document.getElementById("demo3").innerHTML = text_sum;
+    document.getElementById("demo4").innerHTML = text_mean;
+}
+
+//Question3 -->
+function myFunction2(x = 26, y = 10) {
+    return x+y;
+  }
+function myFunctionn2(){
+document.getElementById("demo5").innerHTML = `Sum is ${myFunction2()}`;
+document.getElementById("demo6").innerHTML = `Sum is ${myFunction2(12)}`;
+document.getElementById("demo7").innerHTML = `Sum is ${myFunction2(12,05)}`;
+
+}
+
+//Question4
+let max = "";
+
+max = (x,y,z) => {
+    max_val = 0
+
+    if(x>y){
+        max_val = x;
+    }
+    else{
+        max_val = y;
+    }
+    if(z> max_val){
+        max_val = z;
+    }
+    return max_val;
+}
+
+
+function myFunction3(){
+    let a=document.getElementById("q5").value;
+    let b=document.getElementById("q6").value;
+    let c=document.getElementById("q7").value;
+    text_max = `Maximum of (${a}, ${b}, ${c}) is ${max(a,b,c)}`
+    document.getElementById("demo8").innerHTML = text_max;
+}
+
+//Question 5
+class Polygon {
+    constructor(n, l) {
+        this.n = n;
+        this.l = l;
+    }
+}
+
+class rhombus extends Polygon{
+    constructor(l){
+        super(4,l);
+        
+        document.getElementById("demo9").innerHTML = `The perimeter is ${4*this.l}`;
+    }
+}
+
+class Hexagon extends Polygon{
+    constructor(l){
+        super(6,l)
+        
+        document.getElementById("demo9").innerHTML = `The perimeter is ${6*this.l}`;
+    }
+}
+function myFunction4(){
+    const n=parseInt(document.getElementById('q8').value);
+    const l=parseInt(document.getElementById('q9').value);
+    if(n===4){
+        let show=new rhombus(l);
+    }
+
+    else if(n===6){
+        let show=new Hexagon(l);
+    }
+    else{
+        alert("Enter either 4 or 6");
+    }
+}
+//Question 6
+function myFunction5(){
+    const a=parseInt(document.getElementById('q10').value);
+    const b=parseInt(document.getElementById('q11').value);
+    const c=parseInt(document.getElementById('q12').value);
+    const d=parseInt(document.getElementById('q13').value);
+    mean = (a+b+c+d)/4;
+    document.getElementById("demo10").innerHTML = `The array is [${a}, ${b}, ${c}, ${d}]`;
+    document.getElementById("demo11").innerHTML = `The mean is ${mean}`;
+
+}
+//Question 7
+function myFunction6(){
+    const a=parseInt(document.getElementById('q14').value);
+    const b=parseInt(document.getElementById('q15').value);
+    const c=parseInt(document.getElementById('q16').value);
+    const d=parseInt(document.getElementById('q17').value);
+    arr = [a, b, c, d];
+
+    document.getElementById("demo12").innerHTML = `The array is [${a}, ${b}, ${c}, ${d}]`;
+    document.getElementById("demo13").innerHTML = `The maximum of array is ${Math.max(...arr)}`;
+
+}
+//Question 8
+function myFunction7(){
+    const student = {name: 'Aman', position: 'First', rollno: '26'};
+
+    let { name: fname, position: pos, rollno: roll } = student;
+    document.getElementById("demo14").innerHTML = `The name is ${fname}. The position is ${pos}. The roll no is ${roll}`;
+}
+//Question 9
+import { joinn, name1,name2 } from "/lab16_2.js";
+function myFunction8(){
+    
+    document.getElementById("demo15").innerHTML = joinn(name1,name2);
+
+}
+
+</script>
+
+</body>
+</html>
